@@ -1,4 +1,4 @@
-# 🚀 DevApp
+# 🚀 Job Aggregator
 
 **The AI-Powered Career Ecosystem for Developers**
 
