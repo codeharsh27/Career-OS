@@ -1,151 +1,205 @@
-# 🚀 Job Aggregator
+<div align="center">
 
-**The AI-Powered Career Ecosystem for Developers**
+# CareerOS
 
-DevApp bridges the gap between learning and getting hired. It is an intelligent, offline-first platform that automates job applications, identifies skill gaps, and provides personalized mentorship to accelerate developer career growth.
+**A career management platform built because job searching 
+was broken and nobody had fixed the fragmentation problem.**
 
-Built with **Scalability**, **Clean Architecture**, and **Offline-First** principles at its core.
+[![Flutter](https://img.shields.io/badge/Flutter-Mobile-blue?logo=flutter)](https://flutter.dev)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Python-green?logo=fastapi)](https://fastapi.tiangolo.com)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green?logo=supabase)](https://supabase.com)
+[![Play Store](https://img.shields.io/badge/Play%20Store-Live-brightgreen?logo=google-play)](your-play-store-link)
 
----
+**20+ active users · Live on Play Store**
 
-## 📸 Interface
+[Play Store](your-play-store-link) ·
+[Portfolio](https://harshmule.vercel.app) ·
+[LinkedIn](https://linkedin.com/in/harshmule27)
 
-<p align="center">
-  <img width="45%" alt="Dashboard" src="https://github.com/user-attachments/assets/cdea6f23-6912-4a8e-a6b1-966fef1a7b06" />
-  <img width="45%" alt="Features" src="https://github.com/user-attachments/assets/e9962aa3-a019-4fc5-85fd-ac7cc2b41a8b" />
-</p>
-
----
-
-## ⚡ Core Features
-
-### 🧠 Intelligence & Growth
-- **Skill Gap Analysis**  
-  Scans your developer profile against real market demands and recommends realistic, personalized learning paths.
-  
-- **AI Career Mentor**  
-  A 24/7 assistant for technical queries, system design guidance, interview preparation, and career advice.
-
-- **Smart Learning**  
-  Curated courses, resources, and roadmaps tailored to your current skill level and career goals.
+</div>
 
 ---
 
-### 💼 Career Automation
-- **Auto-Apply System**  
-  Automatically finds relevant job opportunities, fills application forms, applies on your behalf, and tracks application status.
+## The Problem
 
-- **AI Resume Builder**  
-  Instantly generates ATS-optimized resumes and developer portfolio websites.
+Job searching is fragmented.
 
-- **AI Cover Letter Generator**  
-  Creates custom, job-specific cover letters using AI for higher response rates.
+During college I watched friends juggle LinkedIn, Naukri, 
+Indeed, company career pages, and WhatsApp job groups 
+in the same session. They spent more time managing 
+the process than actually applying.
 
----
+Some forgot where they'd already applied.
+Some missed roles because they only checked one platform.
+Others didn't know what to prepare for after finding a posting.
 
-### 🛠 Utility & Performance
-- **Tech Aggregator**  
-  Real-time startup insights and tech news using an API-free implementation.
-
-- **Offline-First Support (Hive)**  
-  Read articles, write notes, and track tasks even without an internet connection.
+The problem wasn't finding jobs. It was managing the search.
 
 ---
 
-## 🏗️ Architecture & Tech Stack
+## What CareerOS Does
 
-DevApp follows **Clean Architecture** and **SOLID principles**, ensuring separation of concerns, scalability, and testability.
+One platform for the entire career journey.
 
-| Layer | Technology |
-|------|-----------|
-| **Language** | Dart |
-| **Framework** | Flutter |
-| **State Management** | Riverpod / Provider |
-| **Architecture** | Clean Architecture + SOLID |
-| **Backend** | Firebase (Auth, Firestore, Cloud Functions) |
-| **Local Storage** | Hive (NoSQL) |
-| **AI Engine** | Custom API + Local ML Integration |
+**Discover** — job listings aggregated from multiple 
+sources into one unified feed.
 
----
+**Match** — AI matching engine surfaces relevant 
+opportunities against your profile. Built to work 
+even before you have enough profile data to train on.
 
-## 📂 Project Structure
+**Track** — every application through every stage:
+```
+Applied → Assessment → Interview → Offer → Selected / Rejected
+```
 
-```bash
-lib/
-├── core/                  # Global utilities, themes, constants
-├── data/                  # Data layer (API calls, Hive, Models)
-│   ├── repositories/      # Repository implementations
-│   └── services/          # External services (Firebase, HTTP)
-├── domain/                # Business logic (Entities, Use Cases)
-├── presentation/          # UI Layer (Screens, Widgets, State Management)
-└── utils/                 # Extensions and helper functions
-````
+**Prepare** — role-specific learning resources and 
+interview prep surfaced based on the actual job description.
 
 ---
 
-## 🚀 Getting Started
+## The Hard Technical Problem
+
+The matching engine had a cold-start problem.
+
+You can't meaningfully match jobs to a profile 
+that doesn't have enough signal yet. Most systems 
+wait for data before building logic. 
+
+I had to define what "match" actually means structurally 
+— before a single user had completed their profile — 
+then build the engine backward from that definition.
+
+That forced a product decision disguised as a technical one: 
+what signals matter most in the first 60 seconds 
+of a user's experience?
+
+---
+
+## Architecture
+
+CareerOS is built as a full-stack cross-platform system
+handling real-world job data, user workflows,
+and intelligent recommendations simultaneously.
+
+```
+carrer-os/
+├── lib/                    # Flutter app
+│   ├── core/               # Global utilities, themes, constants
+│   ├── data/               # Data layer — APIs, local storage, models
+│   │   ├── repositories/   # Repository implementations
+│   │   └── services/       # External services (Supabase, HTTP)
+│   ├── domain/             # Business logic — entities, use cases
+│   └── presentation/       # UI — screens, widgets, state management
+├── backend/                # FastAPI backend
+├── assets/                 # App assets
+└── android/ ios/ web/      # Platform configs
+```
+
+**Mobile:** Flutter + Dart + Riverpod + Provider
+Clean Architecture with strict Presentation / Domain / Data separation.
+
+**Backend:** FastAPI (Python)
+REST API with structured data handling and
+an AI inference layer for matching and recommendations.
+
+**Database:** PostgreSQL + Supabase
+Structured data for jobs, users, applications, 
+and the tracking pipeline. Auth built-in via Supabase.
+
+**Local Storage:** Hive
+Offline-first capabilities — the app works
+even without a network connection.
+
+**AI Layer:** LLM integration for career guidance,
+skill gap analysis, resume suggestions,
+and intelligent job matching.
+
+---
+
+## Key Features
+
+| Feature | Description |
+|---|---|
+| Job Aggregation | Multi-source job feed — one place, all opportunities |
+| Smart Matching | AI matches jobs to profile even with limited initial data |
+| Application Tracking | Full pipeline: Applied → Assessment → Interview → Offer |
+| Skill Gap Analysis | Identifies what to learn based on target job descriptions |
+| AI Career Guidance | LLM-powered mentor for career questions and interview prep |
+| Resume Builder | AI-generated ATS-optimized resume from your profile |
+| Offline Support | Hive local storage — works without internet |
+
+---
+
+## Getting Started
 
 ### Prerequisites
+```bash
+Flutter SDK 3.x
+Python 3.10+
+Supabase account
+```
 
-* Flutter SDK
-* Firebase Project
+### Clone and install
+```bash
+git clone https://github.com/codeharsh27/Carrer-OS.git
+cd Carrer-OS
 
----
+# Install Flutter dependencies
+flutter pub get
 
-### Installation
+# Install backend dependencies
+cd backend && pip install -r requirements.txt
+```
 
-1. **Clone the repository**
+### Environment setup
+```bash
+# Add to your environment or .env file:
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+OPENROUTER_API_KEY=your_openrouter_key
+```
 
-   ```bash
-   git clone https://github.com/codeharsh27/devapp.git
-   cd devapp
-   ```
+### Firebase setup
+```bash
+# Add google-services.json to android/app/
+# Add GoogleService-Info.plist to ios/Runner/
+```
 
-2. **Install dependencies**
+### Run
+```bash
+# Start backend
+cd backend && uvicorn main:app --reload
 
-   ```bash
-   flutter pub get
-   ```
-
-3. **Firebase Configuration**
-
-   * Add `google-services.json` to `android/app/`
-   * Add `GoogleService-Info.plist` to `ios/Runner/`
-
-4. **Run the application**
-
-   ```bash
-   flutter run
-   ```
-
----
-
-## 🛡️ Security & Privacy
-
-* **Authentication**
-  Secure Google and Email login using Firebase Authentication.
-
-* **Data Privacy**
-  Firestore security rules are enforced. Sensitive data is never stored in plain text.
-
-* **Local Encryption**
-  Hive boxes are encrypted to ensure offline data security.
+# Run Flutter app
+flutter run
+```
 
 ---
 
-## 🤝 Contributing
+## What I Learned
 
-Contributions are welcome!
-Please fork the repository and submit a Pull Request with clear descriptions of your changes.
+Building the product was the easy part.
+
+CareerOS has 20+ active users who chose it over 
+every other option available to them. Getting there 
+taught me three things no course covers:
+
+→ Distribution is a completely different skill from building.
+  A great product with no users is just a project.
+
+→ Observing real users before writing code is not optional.
+  It is the actual work.
+
+→ A "figure-it-out" mindset compounds fast.
+  Most problems are solvable if you start before 
+  you feel ready.
 
 ---
 
-## 👨‍💻 Author
+## Built By
 
-**Harsh Mule**
-📧 Email: [code.harsh26@gmail.com](mailto:code.harsh26@gmail.com)
+**Harsh Mule** — Product Engineer
 
----
-
-⭐ If you like this project, consider giving it a star!
-
+[harshmule.vercel.app](https://harshmule.vercel.app) ·
+[code.harsh26@gmail.com](mailto:code.harsh26@gmail.com)
