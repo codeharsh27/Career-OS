@@ -4,15 +4,14 @@
 
 **A career management platform built because job searching 
 was broken and nobody had fixed the fragmentation problem.**
-
+[![Download APK](https://img.shields.io/badge/Download-APK%20v1.0.0-brightgreen?style=flat-square&logo=android)](https://github.com/codeharsh27/Carrer-OS/releases/tag/v1.0.0)
 [![Flutter](https://img.shields.io/badge/Flutter-Mobile-blue?logo=flutter)](https://flutter.dev)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Python-green?logo=fastapi)](https://fastapi.tiangolo.com)
 [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green?logo=supabase)](https://supabase.com)
-[![Play Store](https://img.shields.io/badge/Play%20Store-Live-brightgreen?logo=google-play)](your-play-store-link)
 
-**20+ active users · Live on Play Store**
+**20+ active users**
 
-[Play Store](your-play-store-link) ·
+[Apk Release](https://github.com/codeharsh27/Career-OS/releases/tag/v1.0.0) ·
 [Portfolio](https://harshmule.vercel.app) ·
 [LinkedIn](https://linkedin.com/in/harshmule27)
 
